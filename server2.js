@@ -1,14 +1,16 @@
 var express = require("express");
 var cors = require("cors");
+const { json } = require("body-parser");
 var app = express();
-const path = require("path");
-const router = express.Router();
+
 app.use(cors());
 
-app.get("/", function (req, res, next) {
-  res.sendFile(path.join(__dirname + "/index.html"));
+var corsOptions = {
+  origin: "*",
+};
+app.get("/", function (req, res) {
+  console.log("recived");
+  res.json({ hey: "psst" });
 });
 
-app.listen(80, function () {
-  console.log("CORS-enabled web server listening on port 80");
-});
+app.listen(5000, () => console.log("lisning on port 5000"));

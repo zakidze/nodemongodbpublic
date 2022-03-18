@@ -1,11 +1,12 @@
 var express = require("express");
 var cors = require("cors");
 var app = express();
-
+const path = require("path");
+const router = express.Router();
 app.use(cors());
 
 app.get("/", function (req, res, next) {
-  res.json({ msg: "This is CORS-enabled for all origins!" });
+  res.sendFile(path.join(__dirname + "/index.html"));
 });
 
 app.listen(80, function () {
